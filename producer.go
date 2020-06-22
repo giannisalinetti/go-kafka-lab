@@ -13,7 +13,10 @@ func main() {
 	topicName := flag.String("topic", "", "Topic name")
 	flag.Parse()
 
-	config := &kafka.ConfigMap{"bootstrap.servers": *serverName + ":" + *serverPort}
+	config := &kafka.ConfigMap{
+		"bootstrap.servers": *serverName + ":" + *serverPort,
+	}
+
 	producer, err := kafka.NewProducer(config)
 	if err != nil {
 		log.Fatalf("Error creating producer: %s\n", err)
